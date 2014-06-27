@@ -12,6 +12,6 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 mkdir -p $BUILD_DIR
 cd $BUILD_DIR
-cmake -DCMAKE_BUILD_TYPE=release ..
+# INCLUDE_MOZSVC installs https://github.com/mozilla-services/heka-mozsvc-plugins, which includes Sentry output
+cmake -DCMAKE_BUILD_TYPE=release -DINCLUDE_MOZSVC=true ..
 make
-
