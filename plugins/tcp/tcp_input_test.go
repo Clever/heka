@@ -432,7 +432,7 @@ func TcpInputSpec(c gs.Context) {
 			conn, err := tls.Dial("tcp", ith.AddrStr, clientConfig)
 			c.Expect(err, gs.IsNil)
 			defer conn.Close()
-			conn.SetWriteDeadline(time.Now().Add(time.Duration(10000)))
+			conn.SetWriteDeadline(time.Now().Add(time.Duration(1000000)))
 			n, err := conn.Write([]byte("This is a test."))
 			c.Expect(err, gs.IsNil)
 			c.Expect(n, gs.Equals, len("This is a test."))
