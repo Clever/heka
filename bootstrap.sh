@@ -6,3 +6,4 @@ wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz -O /tmp/godeb-amd64.tar.g
 tar xvzf /tmp/godeb-amd64.tar.gz
 mv godeb /usr/local/bin
 godeb install 1.3
+echo "cd /vagrant" >> /home/vagrant/.bashrc
