@@ -55,6 +55,21 @@ function(git_clone url tag)
     add_dependencies(GoPackages ${name})
 endfunction(git_clone)
 
+function(git_clone_wacky url tag)
+    parse_url(${url})
+    externalproject_add(
+        ${name}_wacky
+        GIT_REPOSITORY ${url}
+        GIT_TAG ${tag}
+        SOURCE_DIR "${PROJECT_PATH}/src/${path}"
+        BUILD_COMMAND ""
+        CONFIGURE_COMMAND ""
+        INSTALL_COMMAND ""
+        UPDATE_COMMAND "" # comment out to enable updates
+    )
+    add_dependencies(GoPackages ${name})
+endfunction(git_clone_wacky)
+
 function(hg_clone url tag)
     parse_url(${url})
     externalproject_add(
@@ -145,7 +160,9 @@ if (INCLUDE_GEOIP)
 endif()
 
 if (INCLUDE_MOZSVC)
-    add_external_plugin(git https://github.com/mozilla-services/heka-mozsvc-plugins 9e454bebb5085e25fc50f32556502141503b69e4)
+    git_clone(https://github.com/getsentry/raven-go 0cc1491d9d27b258a9b4f0238908cb0d51bd6c9b)
+    git_clone_wacky(https://github.com/mozilla-services/heka-mozsvc-plugins 5eb86dea7123aa31d5ceeb1b1c0d2bf005b3a287)
+    add_external_plugin(git https://github.com/Clever/heka-mozsvc-plugins 87166bffa2b36a5588f437357e5ca92d756bc100)
 endif()
 
 if (INCLUDE_DOCUMENTATION)
