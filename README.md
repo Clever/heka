@@ -25,3 +25,7 @@ Resources:
 * GoDoc package docs: http://godoc.org/github.com/mozilla-services/heka
 * Mailing list: https://mail.mozilla.org/listinfo/heka
 * IRC: #heka on irc.mozilla.org
+
+## Deploying at Clever
+
+https://github.com/Clever/clever-ops/tree/master/heka#deploying
